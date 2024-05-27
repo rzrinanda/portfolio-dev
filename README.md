@@ -104,3 +104,5 @@ export const personalData = {
 |    tailwindcss     |
 
 ---
+
+special thanks to Abu Said for this amazing template
