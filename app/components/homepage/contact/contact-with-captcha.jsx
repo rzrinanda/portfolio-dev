@@ -11,9 +11,10 @@ import { toast } from 'react-toastify';
 
 function ContactWithCaptcha() {
   const [input, setInput] = useState({
-    name: '',
-    email: '',
+    user_name: '',
+    user_email: '',
     message: '',
+    contact_number: '',
   });
   // const [captcha, setCaptcha] = useState(null);
   const [token, setToken] = useState("");
@@ -25,7 +26,7 @@ function ContactWithCaptcha() {
   });
 
   const checkRequired = () => {
-    if (input.email && input.message && input.name) {
+    if (input.user_email && input.message && input.user_name) {
       setError({ ...error, required: false });
     }
   };
@@ -57,7 +58,7 @@ function ContactWithCaptcha() {
     };
 
     e.preventDefault();
-    if (!input.email || !input.message || !input.name) {
+    if (!input.user_email || !input.message || !input.user_name) {
       setError({ ...error, required: true });
       return;
     } else if (error.email) {
@@ -71,13 +72,18 @@ function ContactWithCaptcha() {
     const options = { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY };
 
     try {
-      const res = await emailjs.send(serviceID, templateID, input, options);
+      let generatedContactNumber = (Date.now()).toString()
+      generatedContactNumber = generatedContactNumber.substring(generatedContactNumber.length - 6)
+
+      const newInput = { ...input, contact_number: generatedContactNumber }
+
+      const res = await emailjs.send(serviceID, templateID, newInput, options);
 
       if (res.status === 200) {
         toast.success('Message sent successfully!');
         setInput({
-          name: '',
-          email: '',
+          user_name: '',
+          user_email: '',
           message: '',
         });
       };
@@ -107,9 +113,9 @@ function ContactWithCaptcha() {
               type="text"
               maxLength="100"
               required={true}
-              onChange={(e) => setInput({ ...input, name: e.target.value })}
+              onChange={(e) => setInput({ ...input, user_name: e.target.value })}
               onBlur={checkRequired}
-              value={input.name}
+              value={input.user_name}
             />
           </div>
 
@@ -120,11 +126,11 @@ function ContactWithCaptcha() {
               type="email"
               maxLength="100"
               required={true}
-              value={input.email}
-              onChange={(e) => setInput({ ...input, email: e.target.value })}
+              value={input.user_email}
+              onChange={(e) => setInput({ ...input, user_email: e.target.value })}
               onBlur={() => {
                 checkRequired();
-                setError({ ...error, email: !isValidEmail(input.email) });
+                setError({ ...error, email: !isValidEmail(input.user_email) });
               }}
             />
             {error.email &&

@@ -20,7 +20,7 @@ function ContactWithoutCaptcha() {
   });
 
   const checkRequired = () => {
-    if (input.email && input.message && input.name) {
+    if (input.user_email && input.message && input.user_name) {
       setError({ ...error, required: false });
     }
   };
