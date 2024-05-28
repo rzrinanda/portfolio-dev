@@ -4,7 +4,8 @@ import { isValidEmail } from '@/utils/check-email';
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 import { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+// import ReCAPTCHA from 'react-google-recaptcha';
+import { GoogleReCaptchaProvider, GoogleReCaptcha, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { TbMailForward } from "react-icons/tb";
 import { toast } from 'react-toastify';
 
@@ -14,7 +15,10 @@ function ContactWithCaptcha() {
     email: '',
     message: '',
   });
-  const [captcha, setCaptcha] = useState(null);
+  // const [captcha, setCaptcha] = useState(null);
+  const [token, setToken] = useState("");
+  const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
+
   const [error, setError] = useState({
     email: false,
     required: false,
@@ -26,20 +30,30 @@ function ContactWithCaptcha() {
     }
   };
 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const handleSendMail = async (e) => {
-    if (!captcha) {
-      toast.error('Please complete the captcha!');
+    if (!executeRecaptcha) {
+      toast.error('Not available to execute ReCaptcha!');
       return;
     } else {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/google`, {
-        token: captcha
+
+      const gRecaptchaToken = await executeRecaptcha('inquirySubmit')
+
+      const res = await axios.post(`/api/google`, {
+        gRecaptchaToken: gRecaptchaToken
       });
 
-      setCaptcha(null);
-      if (!res.data.success) {
+      if (!res?.data?.success) {
         toast.error('Captcha verification failed!');
         return;
-      };
+      }
+
+      // setCaptcha(null);
+      // if (!res.data.success) {
+      //   toast.error('Captcha verification failed!');
+      //   return;
+      // };
     };
 
     e.preventDefault();
@@ -71,6 +85,10 @@ function ContactWithCaptcha() {
       toast.error(error?.text || error);
     };
   };
+
+  // const setTokenFunc = (getToken) => {
+  //   setToken(getToken);
+  // };
 
   return (
     <div className="">
@@ -127,10 +145,17 @@ function ContactWithCaptcha() {
               value={input.message}
             />
           </div>
-          <ReCAPTCHA
+          {/* <ReCAPTCHA
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
             onChange={(code) => setCaptcha(code)}
-          />
+          /> */}
+          {/* <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
+            <GoogleReCaptcha
+            // className="google-recaptcha-custom-class"
+            // onVerify={setTokenFunc}
+            // refreshReCaptcha={refreshReCaptcha}
+            />
+          </GoogleReCaptchaProvider> */}
           <div className="flex flex-col items-center gap-2">
             {error.required &&
               <p className="text-sm text-red-400">
