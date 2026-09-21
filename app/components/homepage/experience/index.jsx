@@ -36,8 +36,8 @@ function Experience() {
             </div>
           </div>
 
-          <div>
-            <div className="flex flex-col max-h-128 gap-6 overflow-y-auto hover:overflow-y-scroll overflow-x-hidden">
+          <div className="relative">
+            <div className="experience-list flex flex-col max-h-[32rem] gap-5 overflow-y-auto overflow-x-hidden pr-2" aria-label="Work experience timeline">
               {
                 experiences.map(experience => (
                   <GlowCard key={experience.id} identifier={`experience-${experience.id}`}>
@@ -54,7 +54,7 @@ function Experience() {
                           {experience.duration}
                         </p>
                       </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
+                      <div className="flex items-start gap-x-5 px-3 py-5">
                         <div className="text-violet-500  transition-all duration-300 hover:scale-125">
                           <BsPersonWorkspace size={36} />
                         </div>
@@ -65,6 +65,16 @@ function Experience() {
                           <p className="text-sm sm:text-base">
                             {experience.company}
                           </p>
+                          <p className="mt-2 max-w-xl text-xs leading-5 text-[#b7b3ca] sm:text-sm">
+                            {experience.summary}
+                          </p>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {experience.stack.map((skill) => (
+                              <span key={skill} className="rounded-full border border-[#3a315f] bg-[#17122c] px-2 py-1 text-[10px] font-medium text-[#16f2b3] sm:text-xs">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -72,6 +82,7 @@ function Experience() {
                 ))
               }
             </div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#0d1224] to-transparent" />
           </div>
         </div>
       </div>

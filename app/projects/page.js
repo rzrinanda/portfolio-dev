@@ -2,6 +2,7 @@
 'use client';
 
 import {projectsData} from '@/utils/data/projects-data';
+import {filterProjectsByYear} from '@/utils/project-filter';
 import ProjectList from './project-list';
 import {HiChevronDown} from 'react-icons/hi2';
 
@@ -21,9 +22,7 @@ const page = () => {
     setSelectedYear (event.target.value);
   };
 
-  let filteredProjects = projectsData.filter (
-    project => project.year === parseInt (selectedYear)
-  );
+  const filteredProjects = filterProjectsByYear (projectsData, selectedYear);
 
   //use to suppress hydration error
   const [isMounted, setIsMounted] = useState (false);

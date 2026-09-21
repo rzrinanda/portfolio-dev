@@ -4,6 +4,14 @@ import { skillsData } from "@/utils/data/skills";
 import { skillsImage } from "@/utils/skill-image";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import { SiGithubactions, SiMicrosoftsqlserver, SiRabbitmq, SiRedis } from 'react-icons/si';
+
+const supplementalSkillIcons = {
+  'CI/CD': SiGithubactions,
+  'RabbitMQ': SiRabbitmq,
+  'Redis': SiRedis,
+  'SQL Server': SiMicrosoftsqlserver,
+};
 
 function Skills() {
   return (
@@ -36,7 +44,10 @@ function Skills() {
           play={true}
           direction="left"
         >
-          {skillsData.map((skill, id) => (
+          {skillsData.map((skill, id) => {
+            const SupplementalIcon = supplementalSkillIcons[skill];
+
+            return (
             <div className="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer"
               key={id}>
               <div className="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
@@ -46,14 +57,24 @@ function Skills() {
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-3 p-6">
-                  <div className="h-8 sm:h-10">
-                    <Image
-                      src={skillsImage(skill)?.src}
-                      alt={skill}
-                      width={40}
-                      height={40}
-                      className="h-full w-auto rounded-lg"
-                    />
+                  <div className="flex h-10 w-10 items-center justify-center sm:h-12 sm:w-12">
+                    {skillsImage(skill)?.src ? (
+                      <Image
+                        src={skillsImage(skill).src}
+                        alt={skill}
+                        width={40}
+                        height={40}
+                        className="h-full w-auto rounded-lg"
+                      />
+                    ) : (
+                      SupplementalIcon ? (
+                        <SupplementalIcon aria-label={skill} className="h-full w-full rounded-lg p-1 text-violet-200" />
+                      ) : (
+                        <span aria-label={skill} className="flex h-full w-full items-center justify-center rounded-lg border border-violet-400/40 bg-violet-500/10 px-1 text-center text-[10px] font-semibold leading-3 text-violet-200">
+                          {skill.split(/\s|\//).map(word => word[0]).join('').slice(0, 4)}
+                        </span>
+                      )
+                    )}
                   </div>
                   <p className="text-white text-sm sm:text-lg">
                     {skill}
@@ -61,7 +82,8 @@ function Skills() {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </Marquee>
       </div>
     </div>

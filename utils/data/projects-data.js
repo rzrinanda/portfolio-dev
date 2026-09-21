@@ -5,6 +5,20 @@ import travel from '/public/image/travel.jpg';
 
 export const projectsData = [
   {
+    id: 0,
+    name: 'UniFi',
+    abbr: 'UniFi',
+    year: '2024 - Present',
+    description: 'Develop and maintain scalable backend services, integrations, asynchronous workflows, and automation for confidential client systems.',
+    tools: ['.NET Core', 'C#', 'PostgreSQL', 'RabbitMQ', 'Redis', 'Docker'],
+    role: ['Back End Developer'],
+    code: '',
+    demo: '',
+    image: ayla,
+    customer: 'Confidential',
+    endCustomer: 'Confidential',
+  },
+  {
     id: 1,
     name: 'Grassroots Leader @ People Association',
     abbr: 'GRL@PA',
