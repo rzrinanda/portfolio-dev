@@ -2,6 +2,12 @@ export const personalData = {
   name: 'RIZAL',
   profile: '/profile.png',
   designation: 'Software Developer',
+  heroSkills: [
+    'NodeJS', 'Express', 'NestJS', 'C#', '.NET Core', 'PHP', 'CodeIgniter',
+    'React', 'NextJS', 'Vue', 'Python', 'Flask', 'Django', 'PostgreSql',
+    'MySql', 'SQLServer', 'MongoDB', 'Docker', 'AWS', 'Azure', 'RabbitMQ',
+    'Redis', 'Hangfire', 'CI/CD', 'Linux',
+  ],
   description: "I am Rizal Zulfikar Rinanda. In my daily life, I work as a professional and enthusiastic developer. I am a goal-oriented person with good analytical thinking, quick learning, and result-oriented. I enjoy learning and exploring new technologies, skills, and competencies. I am enthusiastic about analysis and problem solving. I am an open-minded person who listens well to others' points of view. I can work well both as a team member and independently. I have over a decade of experience working on complex systems using various programming languages, frameworks, and development methodologies. I am used to working with a tight deadline and high expectations, completing with a client-approved final system while also ensuring that communication with clients and the team runs smoothly from the start of the project to after sales. I am open to any job opportunity that aligns with my skills and interests.",
   email: 'rzrinanda@gmail.com',
   phone: '+6282240407700',

@@ -31,6 +31,15 @@ test('portfolio exposes the current resume and backend platform expertise', () =
   assert.ok(skillsData.includes('SQL Server'));
 });
 
+test('hero code card preserves frontend skills while showing current backend tools', () => {
+  assert.ok(personalData.heroSkills.includes('React'));
+  assert.ok(personalData.heroSkills.includes('NextJS'));
+  assert.ok(personalData.heroSkills.includes('Vue'));
+  assert.ok(personalData.heroSkills.includes('RabbitMQ'));
+  assert.ok(personalData.heroSkills.includes('Redis'));
+  assert.ok(personalData.heroSkills.includes('Azure'));
+});
+
 test('featured projects lead with UniFi backend work', () => {
   assert.equal(projectsData[0].name, 'UniFi');
   assert.equal(projectsData[0].year, '2024 - Present');
