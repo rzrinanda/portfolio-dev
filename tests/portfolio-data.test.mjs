@@ -85,3 +85,8 @@ test('contact invitation addresses recruiter conversations', async () => {
   const contact = await readFile(new URL('../app/components/homepage/contact/contact-without-captcha.jsx', import.meta.url), 'utf8');
   assert.match(contact, /backend/i);
 });
+
+test('captcha contact invitation addresses recruiter conversations', async () => {
+  const contact = await readFile(new URL('../app/components/homepage/contact/contact-with-captcha.jsx', import.meta.url), 'utf8');
+  assert.match(contact, /backend/i);
+});
