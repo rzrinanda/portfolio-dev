@@ -90,3 +90,10 @@ test('captcha contact invitation addresses recruiter conversations', async () =>
   const contact = await readFile(new URL('../app/components/homepage/contact/contact-with-captcha.jsx', import.meta.url), 'utf8');
   assert.match(contact, /backend/i);
 });
+
+test('layout does not require a remote font during local preview or build', async () => {
+  const layout = await readFile(new URL('../app/layout.js', import.meta.url), 'utf8');
+  const styles = await readFile(new URL('../app/css/globals.scss', import.meta.url), 'utf8');
+  assert.doesNotMatch(layout, /next\/font\/google/);
+  assert.match(styles, /font-family:/);
+});
