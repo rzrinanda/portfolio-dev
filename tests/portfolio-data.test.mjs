@@ -69,3 +69,8 @@ test('homepage recruiter copy is driven by recruiter profile data', async () => 
   assert.match(hero, /recruiterProfile\.headline/);
   assert.match(about, /recruiterProfile\.about/);
 });
+
+test('recruiter focus is rendered on the homepage', async () => {
+  const page = await readFile(new URL('../app/page.js', import.meta.url), 'utf8');
+  assert.match(page, /RecruiterFocus/);
+});
