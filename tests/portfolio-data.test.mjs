@@ -97,3 +97,9 @@ test('layout does not require a remote font during local preview or build', asyn
   assert.doesNotMatch(layout, /next\/font\/google/);
   assert.match(styles, /font-family:/);
 });
+
+test('page metadata supports the recruiter-facing backend narrative', async () => {
+  const layout = await readFile(new URL('../app/layout.js', import.meta.url), 'utf8');
+  assert.match(layout, /Backend Software Engineer/);
+  assert.match(layout, /APIs, integrations, and business-critical systems/);
+});

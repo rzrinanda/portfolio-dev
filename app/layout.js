@@ -6,8 +6,8 @@ import Navbar from './components/navbar';
 import './css/card.scss';
 import './css/globals.scss';
 export const metadata = {
-  title: 'Portfolio of Rizal Zulfikar Rinanda - Software Developer',
-  description: 'This is the portfolio of Rizal Zulfikar Rinanda. I am a full stack developer and a self taught developer. I love to learn new things and I am always open to collaborating with others. I am a quick learner and I am always looking for new challenges.',
+  title: 'Rizal Zulfikar Rinanda | Backend Software Engineer',
+  description: 'Backend Software Engineer with 10+ years of experience building APIs, integrations, and business-critical systems, supported by full-stack delivery experience.',
 };
 
 export default function RootLayout({children}) {
