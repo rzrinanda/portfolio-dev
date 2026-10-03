@@ -45,3 +45,20 @@ test('featured projects lead with UniFi backend work', () => {
   assert.equal(projectsData[0].year, '2024 - Present');
   assert.ok(projectsData[0].tools.includes('RabbitMQ'));
 });
+
+test('recruiter profile is backend focused without losing frontend capability', () => {
+  assert.equal(personalData.recruiterProfile.headline, 'Backend Software Engineer');
+  assert.equal(personalData.recruiterProfile.strengths.length, 3);
+  assert.ok(personalData.heroSkills.includes('React'));
+});
+
+test('recruiter case studies cover current, lead, and modernization evidence', () => {
+  const featured = projectsData
+    .filter(project => project.recruiterCaseStudy)
+    .sort((left, right) => left.recruiterCaseStudy.order - right.recruiterCaseStudy.order);
+  assert.deepEqual(featured.map(project => project.name), [
+    'UniFi',
+    'Smart Integrated Security System',
+    'Republic Polytechnic Connect',
+  ]);
+});

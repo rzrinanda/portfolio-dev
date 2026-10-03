@@ -2,6 +2,17 @@ export const personalData = {
   name: 'RIZAL',
   profile: '/profile.png',
   designation: 'Software Developer',
+  recruiterProfile: {
+    headline: 'Backend Software Engineer',
+    summary: '10+ years building APIs, integrations, internal platforms, and business-critical systems—with full-stack delivery experience.',
+    careerSignal: 'Focused on owning complex backend platforms and growing into technical leadership.',
+    about: 'Backend-focused software engineer with over a decade of experience delivering enterprise, government, and operational systems. I build reliable APIs, integrations, and data-driven platforms, while contributing across the stack when a product needs end-to-end ownership.',
+    strengths: [
+      { title: 'Backend Platforms & Integrations', description: 'Build reliable services, APIs, asynchronous workflows, and data integrations for business-critical systems.' },
+      { title: 'Enterprise Modernization', description: 'Maintain, improve, and modernize established applications without losing operational continuity.' },
+      { title: 'End-to-End Delivery', description: 'Bring backend depth together with practical frontend experience when a product needs complete delivery.' },
+    ],
+  },
   heroSkills: [
     'NodeJS', 'Express', 'NestJS', 'C#', '.NET Core', 'PHP', 'CodeIgniter',
     'React', 'NextJS', 'Vue', 'Python', 'Flask', 'Django', 'PostgreSql',

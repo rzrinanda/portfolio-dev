@@ -17,6 +17,12 @@ export const projectsData = [
     image: ayla,
     customer: 'Confidential',
     endCustomer: 'Confidential',
+    recruiterCaseStudy: {
+      order: 1,
+      context: 'Current confidential client platform',
+      contribution: 'Develop and maintain backend services, integrations, asynchronous workflows, and developer automation.',
+      proof: 'Current experience with a modern .NET backend platform, messaging, caching, and containerized delivery.',
+    },
   },
   {
     id: 1,
@@ -45,6 +51,12 @@ export const projectsData = [
     image: travel,
     customer: 'Singapore Government Agency',
     endCustomer: 'GovTech Singapore Government',
+    recruiterCaseStudy: {
+      order: 3,
+      context: 'Singapore government-connected application',
+      contribution: 'Supported maintenance, bug fixing, and migration from .NET 4 to .NET 6.',
+      proof: 'Can modernize established enterprise applications while keeping a critical system operational.',
+    },
   },
   {
     id: 3,
@@ -80,6 +92,12 @@ export const projectsData = [
     role: ['Lead Back End Developer', 'Front End Developer'],
     customer: 'Pindad',
     endCustomer: 'Direktorat Jendral Pemasyarakatan',
+    recruiterCaseStudy: {
+      order: 2,
+      context: 'Security and operational monitoring system for a government corrections context',
+      contribution: 'Led backend development for connected security capabilities including detection, tracking, guest, and patrol workflows.',
+      proof: 'Technical leadership across a complex, integration-heavy operational system.',
+    },
   },
   {
     id: 5,
