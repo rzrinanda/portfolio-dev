@@ -62,3 +62,10 @@ test('recruiter case studies cover current, lead, and modernization evidence', (
     'Republic Polytechnic Connect',
   ]);
 });
+
+test('homepage recruiter copy is driven by recruiter profile data', async () => {
+  const hero = await readFile(new URL('../app/components/homepage/hero-section/index.jsx', import.meta.url), 'utf8');
+  const about = await readFile(new URL('../app/components/homepage/about/index.jsx', import.meta.url), 'utf8');
+  assert.match(hero, /recruiterProfile\.headline/);
+  assert.match(about, /recruiterProfile\.about/);
+});

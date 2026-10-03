@@ -27,12 +27,19 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{personalData.designation}</span>
+            {` , I'm a `}
+            <span className=" text-[#16f2b3]">{personalData.recruiterProfile.headline}</span>
             .
           </h1>
 
-          <div className="my-12 flex items-center gap-5">
+          <p className="mt-5 max-w-xl text-sm leading-6 text-[#d3d8e8] md:text-base">
+            {personalData.recruiterProfile.summary}
+          </p>
+          <p className="mt-3 max-w-xl text-sm font-medium leading-6 text-[#16f2b3]">
+            {personalData.recruiterProfile.careerSignal}
+          </p>
+
+          <div className="my-8 flex items-center gap-5">
             <Link
               href={personalData.github}
               target='_blank'
