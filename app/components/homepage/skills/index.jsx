@@ -34,6 +34,10 @@ function Skills() {
         </div>
       </div>
 
+      <p className="mx-auto max-w-2xl px-4 text-center text-sm leading-6 text-[#b7b3ca]">
+        <span className="font-semibold text-[#16f2b3]">Backend focus:</span> APIs, integrations, data platforms, and delivery tooling—supported by full-stack experience.
+      </p>
+
       <div className="w-full my-12">
         <Marquee
           gradient={false}

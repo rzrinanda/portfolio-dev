@@ -74,3 +74,14 @@ test('recruiter focus is rendered on the homepage', async () => {
   const page = await readFile(new URL('../app/page.js', import.meta.url), 'utf8');
   assert.match(page, /RecruiterFocus/);
 });
+
+test('skills retain marquee cards while stating the backend-first focus', async () => {
+  const skills = await readFile(new URL('../app/components/homepage/skills/index.jsx', import.meta.url), 'utf8');
+  assert.match(skills, /Backend focus/);
+  assert.match(skills, /<Marquee/);
+});
+
+test('contact invitation addresses recruiter conversations', async () => {
+  const contact = await readFile(new URL('../app/components/homepage/contact/contact-without-captcha.jsx', import.meta.url), 'utf8');
+  assert.match(contact, /backend/i);
+});
