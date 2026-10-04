@@ -124,5 +124,6 @@ test('client mode has a delivery-first hero and floating section navigation', as
   assert.match(hero, /Turn operational bottlenecks into/);
   assert.match(hero, /Delivery console/);
   assert.match(rail, /IntersectionObserver/);
-  assert.match(rail, /Collapse section navigation/);
+  assert.match(rail, /Hide section navigation/);
+  assert.match(rail, /<BsHouse/);
 });
