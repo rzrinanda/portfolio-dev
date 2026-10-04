@@ -110,3 +110,10 @@ test('portfolio exposes a client-facing full-stack profile', () => {
   assert.equal(personalData.clientProfile.strengths.length, 3);
   assert.ok(projectsData.filter(project => project.clientCaseStudy).length === 3);
 });
+
+test('client navigation retains its shareable audience query', async () => {
+  const navbar = await readFile(new URL('../app/components/navbar.jsx', import.meta.url), 'utf8');
+  assert.match(navbar, /audienceSuffix/);
+  assert.match(navbar, /getAll\('audience'\)/);
+  assert.match(navbar, /\?audience=client/);
+});
