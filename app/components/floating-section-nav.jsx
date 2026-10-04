@@ -18,6 +18,14 @@ export default function FloatingSectionNav({ audience = 'recruiter' }) {
   const suffix = audience === 'client' ? '?audience=client' : '';
 
   useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    const setDefaultMenuState = () => setIsOpen(desktop.matches);
+    setDefaultMenuState();
+    desktop.addEventListener('change', setDefaultMenuState);
+    return () => desktop.removeEventListener('change', setDefaultMenuState);
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (visible) setActive(visible.target.id);
