@@ -117,3 +117,12 @@ test('client navigation retains its shareable audience query', async () => {
   assert.match(navbar, /getAll\('audience'\)/);
   assert.match(navbar, /\?audience=client/);
 });
+
+test('client mode has a delivery-first hero and floating section navigation', async () => {
+  const hero = await readFile(new URL('../app/components/homepage/hero-section/index.jsx', import.meta.url), 'utf8');
+  const rail = await readFile(new URL('../app/components/floating-section-nav.jsx', import.meta.url), 'utf8');
+  assert.match(hero, /Turn operational bottlenecks into/);
+  assert.match(hero, /Delivery console/);
+  assert.match(rail, /IntersectionObserver/);
+  assert.match(rail, /Collapse section navigation/);
+});

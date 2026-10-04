@@ -30,7 +30,7 @@ function RecruiterFocus({ audience = 'recruiter' }) {
 
       <div className="mt-16 flex items-center gap-4">
         <span className="h-px flex-1 bg-[#2a2450]" />
-        <h2 className="text-xl font-semibold text-white">Selected impact</h2>
+        <h2 className="text-xl font-semibold text-white">{audience === 'client' ? 'How I turn complex workflows into working systems' : 'Selected impact'}</h2>
         <span className="h-px flex-1 bg-[#2a2450]" />
       </div>
       <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -39,8 +39,8 @@ function RecruiterFocus({ audience = 'recruiter' }) {
             <BsBriefcase className="text-pink-500" size={24} />
             <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-[#16f2b3]">{project.role.join(' · ')}</p>
             <h3 className="mt-2 text-xl font-semibold text-white">{project.name}</h3>
-            <p className="mt-3 text-sm leading-6 text-[#b7b3ca]">{project[caseStudyKey].context}</p>
-            <p className="mt-4 text-sm leading-6 text-[#d3d8e8]">{project[caseStudyKey].contribution}</p>
+            <p className="mt-3 text-sm leading-6 text-[#b7b3ca]">{audience === 'client' ? `Context: ${project[caseStudyKey].context}` : project[caseStudyKey].context}</p>
+            <p className="mt-4 text-sm leading-6 text-[#d3d8e8]">{audience === 'client' ? `Approach: ${project[caseStudyKey].contribution}` : project[caseStudyKey].contribution}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               {project.tools.map((tool) => <span key={tool} className="rounded-full border border-[#3a315f] px-2 py-1 text-xs text-[#16f2b3]">{tool}</span>)}
             </div>
