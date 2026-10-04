@@ -21,13 +21,13 @@ export default function FloatingSectionNav({ audience = 'recruiter' }) {
     const observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (visible) setActive(visible.target.id);
-    }, { rootMargin: '-35% 0px -55% 0px', threshold: [0.1, 0.3] });
+    }, { rootMargin: '-180px 0px -240px 0px', threshold: [0.1, 0.3] });
     sections.forEach(({ id }) => document.getElementById(id) && observer.observe(document.getElementById(id)));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <aside className={`fixed left-3 top-1/2 z-40 -translate-y-1/2 ${expanded ? 'w-40' : 'w-12'}`}>
+    <aside className={`fixed bottom-4 right-4 z-[60] xl:bottom-auto xl:left-3 xl:right-auto xl:top-1/2 xl:-translate-y-1/2 ${expanded ? 'w-40' : 'w-12'}`}>
       <div className="rounded-2xl border border-[#3a315f] bg-[#11152c]/95 p-1.5 shadow-2xl backdrop-blur">
         <button type="button" aria-label={expanded ? 'Collapse section navigation' : 'Expand section navigation'} aria-expanded={expanded} onClick={() => setExpanded(!expanded)} className="flex h-9 w-full items-center justify-center rounded-xl text-[#16f2b3] hover:bg-[#1a1443]"><BsList size={21} /></button>
         <nav aria-label="Page sections" className="mt-1 space-y-1">
