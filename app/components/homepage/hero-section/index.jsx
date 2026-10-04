@@ -10,7 +10,8 @@ import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
-function HeroSection() {
+function HeroSection({ audience = 'recruiter' }) {
+  const profile = audience === 'client' ? personalData.clientProfile : personalData.recruiterProfile;
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -28,15 +29,15 @@ function HeroSection() {
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
             {` , I'm a `}
-            <span className=" text-[#16f2b3]">{personalData.recruiterProfile.headline}</span>
+            <span className=" text-[#16f2b3]">{profile.headline}</span>
             .
           </h1>
 
           <p className="mt-5 max-w-xl text-sm leading-6 text-[#d3d8e8] md:text-base">
-            {personalData.recruiterProfile.summary}
+            {profile.summary}
           </p>
           <p className="mt-3 max-w-xl text-sm font-medium leading-6 text-[#16f2b3]">
-            {personalData.recruiterProfile.careerSignal}
+            {profile.careerSignal}
           </p>
 
           <div className="my-8 flex items-center gap-5">

@@ -23,6 +23,7 @@ export const projectsData = [
       contribution: 'Develop and maintain backend services, integrations, asynchronous workflows, and developer automation.',
       proof: 'Current experience with a modern .NET backend platform, messaging, caching, and containerized delivery.',
     },
+    clientCaseStudy: { order: 1, context: 'Confidential platform delivery', contribution: 'Build and evolve backend services, integrations, asynchronous workflows, and automation.', proof: 'A practical foundation for reliable operational software.' },
   },
   {
     id: 1,
@@ -57,6 +58,7 @@ export const projectsData = [
       contribution: 'Supported maintenance, bug fixing, and migration from .NET 4 to .NET 6.',
       proof: 'Can modernize established enterprise applications while keeping a critical system operational.',
     },
+    clientCaseStudy: { order: 3, context: 'Established government-connected application', contribution: 'Support maintenance, fixes, and a .NET 4 to .NET 6 modernization.', proof: 'Modernize critical software without disrupting its ongoing use.' },
   },
   {
     id: 3,
@@ -98,6 +100,7 @@ export const projectsData = [
       contribution: 'Led backend development for connected security capabilities including detection, tracking, guest, and patrol workflows.',
       proof: 'Technical leadership across a complex, integration-heavy operational system.',
     },
+    clientCaseStudy: { order: 2, context: 'Connected security and operations system', contribution: 'Deliver backend leadership and frontend work across detection, tracking, guest, and patrol workflows.', proof: 'Handle integration-heavy operational workflows end to end.' },
   },
   {
     id: 5,

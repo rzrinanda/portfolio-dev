@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { TbMailForward } from "react-icons/tb";
 import { toast } from 'react-toastify';
 
-function ContactWithoutCaptcha() {
+function ContactWithoutCaptcha({ audience = 'recruiter' }) {
   const [input, setInput] = useState({
     user_name: '',
     user_email: '',
@@ -71,7 +71,7 @@ function ContactWithoutCaptcha() {
       </p>
       <div className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5">
         <p className="text-sm text-[#d3d8e8]">
-          {"Recruiting for a senior backend role or a backend lead-track opportunity? I would be glad to discuss the systems, integrations, and delivery experience behind this portfolio."}
+          {audience === 'client' ? "Have a project involving a web application, integration, internal system, or modernization effort? Let us discuss a practical delivery approach." : "Recruiting for a senior backend role or a backend lead-track opportunity? I would be glad to discuss the systems, integrations, and delivery experience behind this portfolio."}
         </p>
         <div className="mt-6 flex flex-col gap-4">
           <div className="flex flex-col gap-2">

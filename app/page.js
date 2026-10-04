@@ -8,18 +8,19 @@ import Projects from "./components/homepage/projects";
 import RecruiterFocus from "./components/homepage/recruiter-focus";
 import Skills from "./components/homepage/skills";
 
-export default async function Home() {
+export default async function Home({ searchParams }) {
+  const audience = searchParams?.audience === 'client' ? 'client' : 'recruiter';
   return (
     <>
-      <HeroSection />
-      <RecruiterFocus />
+      <HeroSection audience={audience} />
+      <RecruiterFocus audience={audience} />
       <AboutSection />
       <Experience />
-      <Skills />
+      <Skills audience={audience} />
       <Projects />
       <Education />
       {/* <Blog blogs={blogs} /> */}
-      <ContactSection />
+      <ContactSection audience={audience} />
     </>
   )
 };

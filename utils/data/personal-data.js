@@ -13,6 +13,18 @@ export const personalData = {
       { title: 'End-to-End Delivery', description: 'Bring backend depth together with practical frontend experience when a product needs complete delivery.' },
     ],
   },
+  clientProfile: {
+    headline: 'Full-Stack Software Developer',
+    summary: 'I turn operational workflows into reliable web applications, APIs, integrations, and data-driven platforms.',
+    careerSignal: 'Practical end-to-end delivery, from business process to maintainable software.',
+    about: 'I partner on software delivery across backend services, web interfaces, integrations, and operational data flows—bringing the right technical depth to move a product forward.',
+    contactInvitation: 'Have a project involving a web application, integration, internal system, or modernization effort? Let us discuss a practical delivery approach.',
+    strengths: [
+      { title: 'End-to-End Solution Delivery', description: 'Connect product workflows, backend services, and usable interfaces into a coherent application.' },
+      { title: 'Integrations & Reliable Platforms', description: 'Build dependable APIs, asynchronous workflows, data integrations, and delivery tooling.' },
+      { title: 'Modernization That Keeps Moving', description: 'Improve established applications while respecting operational continuity and maintainability.' },
+    ],
+  },
   heroSkills: [
     'NodeJS', 'Express', 'NestJS', 'C#', '.NET Core', 'PHP', 'CodeIgniter',
     'React', 'NextJS', 'Vue', 'Python', 'Flask', 'Django', 'PostgreSql',

@@ -66,7 +66,8 @@ test('recruiter case studies cover current, lead, and modernization evidence', (
 test('homepage recruiter copy is driven by recruiter profile data', async () => {
   const hero = await readFile(new URL('../app/components/homepage/hero-section/index.jsx', import.meta.url), 'utf8');
   const about = await readFile(new URL('../app/components/homepage/about/index.jsx', import.meta.url), 'utf8');
-  assert.match(hero, /recruiterProfile\.headline/);
+  assert.match(hero, /personalData\.recruiterProfile/);
+  assert.match(hero, /personalData\.clientProfile/);
   assert.match(about, /recruiterProfile\.about/);
 });
 
@@ -102,4 +103,10 @@ test('page metadata supports the recruiter-facing backend narrative', async () =
   const layout = await readFile(new URL('../app/layout.js', import.meta.url), 'utf8');
   assert.match(layout, /Backend Software Engineer/);
   assert.match(layout, /APIs, integrations, and business-critical systems/);
+});
+
+test('portfolio exposes a client-facing full-stack profile', () => {
+  assert.equal(personalData.clientProfile.headline, 'Full-Stack Software Developer');
+  assert.equal(personalData.clientProfile.strengths.length, 3);
+  assert.ok(projectsData.filter(project => project.clientCaseStudy).length === 3);
 });
