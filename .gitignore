@@ -34,3 +34,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local AI assistant instructions, plans, and scratch artifacts
+.codex/
+.claude/
+.agents/
+.superpowers/
+docs/superpowers/
+AGENTS.md
+CLAUDE.md
+CODEX.md
