@@ -35,7 +35,7 @@ export default function FloatingSectionNav({ audience = 'recruiter' }) {
   }, []);
 
   return (
-    <aside className="fixed bottom-4 left-4 z-[60] xl:bottom-auto xl:left-3 xl:top-1/2 xl:-translate-y-1/2">
+    <aside className="fixed bottom-24 right-4 z-[60] xl:bottom-auto xl:left-3 xl:right-auto xl:top-1/2 xl:-translate-y-1/2">
       <div className="rounded-2xl border border-[#3a315f] bg-[#11152c]/95 p-1.5 shadow-2xl backdrop-blur">
         <button type="button" aria-label={isOpen ? 'Hide section navigation' : 'Show section navigation'} aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)} className="flex h-10 w-10 items-center justify-center rounded-xl text-[#16f2b3] hover:bg-[#1a1443]"><BsList size={21} /></button>
         <nav aria-label="Page sections" className={isOpen ? 'mt-1 space-y-1 border-t border-[#2a2450] pt-1' : 'hidden'}>
