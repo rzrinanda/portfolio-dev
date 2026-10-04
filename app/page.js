@@ -7,11 +7,13 @@ import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import RecruiterFocus from "./components/homepage/recruiter-focus";
 import Skills from "./components/homepage/skills";
+import FloatingSectionNav from './components/floating-section-nav';
 
 export default async function Home({ searchParams }) {
   const audience = searchParams?.audience === 'client' ? 'client' : 'recruiter';
   return (
     <>
+      <FloatingSectionNav audience={audience} />
       <HeroSection audience={audience} />
       <RecruiterFocus audience={audience} />
       <AboutSection />

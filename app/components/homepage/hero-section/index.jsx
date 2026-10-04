@@ -12,6 +12,7 @@ import { SiLeetcode } from "react-icons/si";
 
 function HeroSection({ audience = 'recruiter' }) {
   const profile = audience === 'client' ? personalData.clientProfile : personalData.recruiterProfile;
+  const isClient = audience === 'client';
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -25,12 +26,7 @@ function HeroSection({ audience = 'recruiter' }) {
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
         <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
           <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
-            Hello, <br />
-            This is {' '}
-            <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a `}
-            <span className=" text-[#16f2b3]">{profile.headline}</span>
-            .
+            {isClient ? <>Turn operational bottlenecks into <span className="text-[#16f2b3]">reliable software.</span></> : <>Hello, <br />This is {' '}<span className=" text-pink-500">{personalData.name}</span>{` , I'm a `}<span className=" text-[#16f2b3]">{profile.headline}</span>.</>}
           </h1>
 
           <p className="mt-5 max-w-xl text-sm leading-6 text-[#d3d8e8] md:text-base">
@@ -79,22 +75,22 @@ function HeroSection({ audience = 'recruiter' }) {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link href="#contact" className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600">
+            <Link href={isClient ? '#contact' : '#contact'} className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600">
               <button className="px-3 text-xs md:px-8 py-3 md:py-4 bg-[#0d1224] rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#ffff] no-underline transition-all duration-200 ease-out  md:font-semibold flex items-center gap-1 hover:gap-3">
-                <span>Contact me</span>
+                <span>{isClient ? profile.primaryCta : 'Contact me'}</span>
                 <RiContactsFill size={16} />
               </button>
             </Link>
 
-            <Link className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold" role="button" target="_blank" href={personalData.resume}
+            <Link className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold" role="button" target={isClient ? undefined : "_blank"} href={isClient ? '#recruiter-focus-title' : personalData.resume}
             >
-              <span>Get Resume</span>
+              <span>{isClient ? profile.secondaryCta : 'Get Resume'}</span>
               <MdDownload size={16} />
             </Link>
           </div>
 
         </div>
-        <div className="order-1 lg:order-2 from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37]">
+        {isClient ? <div className="order-1 lg:order-2 rounded-lg border border-[#1b2c68a0] bg-[#0a0d37] p-6 lg:p-8"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#16f2b3]">Delivery console</p><div className="mt-7 space-y-4">{profile.deliveryStages.map((stage, index) => <div key={stage} className="flex items-center gap-4 rounded-xl border border-[#2a2450] bg-[#11152c] p-4"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-600 font-bold text-white">{index + 1}</span><span className="text-white">{stage}</span></div>)}</div><div className="mt-7 border-t border-[#2a2450] pt-5">{profile.trustSignals.map(signal => <p key={signal} className="mt-2 text-sm text-[#b7b3ca]">• {signal}</p>)}</div></div> : <div className="order-1 lg:order-2 from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37]">
           <div className="flex flex-row">
             <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
             <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
@@ -183,7 +179,7 @@ function HeroSection({ audience = 'recruiter' }) {
               <div><span className="text-gray-400">{`};`}</span></div>
             </code>
           </div>
-        </div>
+        </div>}
       </div>
     </section>
   );

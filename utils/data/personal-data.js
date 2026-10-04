@@ -24,6 +24,10 @@ export const personalData = {
       { title: 'Integrations & Reliable Platforms', description: 'Build dependable APIs, asynchronous workflows, data integrations, and delivery tooling.' },
       { title: 'Modernization That Keeps Moving', description: 'Improve established applications while respecting operational continuity and maintainability.' },
     ],
+    primaryCta: 'Discuss Your Project',
+    secondaryCta: 'See Delivery Approach',
+    trustSignals: ['10+ years of delivery experience', 'Enterprise & operational systems', 'Backend-to-frontend ownership'],
+    deliveryStages: ['Understand the workflow', 'Build the right system', 'Improve and support it'],
   },
   heroSkills: [
     'NodeJS', 'Express', 'NestJS', 'C#', '.NET Core', 'PHP', 'CodeIgniter',
