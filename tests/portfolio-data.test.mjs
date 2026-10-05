@@ -129,3 +129,9 @@ test('client mode has a delivery-first hero and floating section navigation', as
   assert.match(rail, /useState\('home'\)/);
   assert.match(rail, /min-width: 1280px/);
 });
+
+test('recaptcha badge stays above fixed portfolio controls', async () => {
+  const styles = await readFile(new URL('../app/css/globals.scss', import.meta.url), 'utf8');
+  assert.match(styles, /\.grecaptcha-badge/);
+  assert.match(styles, /z-index:\s*100000/);
+});

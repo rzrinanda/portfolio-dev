@@ -99,3 +99,8 @@ body {
 .experience-list::-webkit-scrollbar {
   display: none;
 }
+
+/* Keep Google's fixed reCAPTCHA badge available above Safari fixed layers. */
+.grecaptcha-badge {
+  z-index: 100000 !important;
+}
