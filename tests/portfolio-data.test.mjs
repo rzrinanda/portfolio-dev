@@ -147,3 +147,8 @@ test('portfolio provides a persisted English-first language switcher', async () 
   assert.match(switcher, /🇮🇩/);
   assert.match(layout, /LanguageProvider/);
 });
+
+test('every section using the language context is a client component', async () => {
+  const projects = await readFile(new URL('../app/components/homepage/projects/index.jsx', import.meta.url), 'utf8');
+  assert.match(projects, /^['"]use client['"];/);
+});
