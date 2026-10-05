@@ -14,8 +14,10 @@ import ContactWithCaptcha from './contact-with-captcha';
 import ContactWithoutCaptcha from './contact-without-captcha';
 import { useState, useMemo } from 'react'
 import GoogleCaptchaWrapper from './google-captcha-wrapper';
+import { useLanguage } from '@/app/components/language-provider';
 
 function ContactSection({ audience = 'recruiter' }) {
+  const { t } = useLanguage();
   const changeInfo = (info, type) => {
     let secret = "407700"
     let partInfo = info
@@ -36,7 +38,7 @@ function ContactSection({ audience = 'recruiter' }) {
       <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white">
         <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">
           <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
-            CONTACT
+            {t('contact')}
           </span>
           <span className="h-36 w-[2px] bg-[#1a1443]"></span>
         </div>
@@ -67,7 +69,7 @@ function ContactSection({ audience = 'recruiter' }) {
                 <span data-tooltip-id='hidden-info-tooltip' data-tooltip-place='right' onMouseDown={() => setIsShowPhoneNumber(!isShowPhoneNumber)} onMouseUp={() => setIsShowPhoneNumber(!isShowPhoneNumber)}>
                   {!isShowPhoneNumber === true ? changeInfo(personalData.phone, "phone") : personalData.phone}
                 </span>
-                <Tooltip id="hidden-info-tooltip">Hold to see hidden info.</Tooltip>
+                <Tooltip id="hidden-info-tooltip">{t('holdToReveal')}</Tooltip>
               </p>
               <p className="text-sm md:text-xl flex items-center gap-3">
                 <CiLocationOn

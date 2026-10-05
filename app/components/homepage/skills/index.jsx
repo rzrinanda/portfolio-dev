@@ -1,10 +1,12 @@
 // @flow strict
+"use client";
 
 import { skillsData } from "@/utils/data/skills";
 import { skillsImage } from "@/utils/skill-image";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { SiGithubactions, SiMicrosoftsqlserver, SiRabbitmq, SiRedis } from 'react-icons/si';
+import { useLanguage } from '@/app/components/language-provider';
 
 const supplementalSkillIcons = {
   'CI/CD': SiGithubactions,
@@ -14,6 +16,7 @@ const supplementalSkillIcons = {
 };
 
 function Skills({ audience = 'recruiter' }) {
+  const { t } = useLanguage();
   return (
     <div id="skills" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
       <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl  opacity-20"></div>
@@ -28,14 +31,14 @@ function Skills({ audience = 'recruiter' }) {
         <div className="flex  items-center">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
           <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Skills
+            {t('skills')}
           </span>
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>
       </div>
 
       <p className="mx-auto max-w-2xl px-4 text-center text-sm leading-6 text-[#b7b3ca]">
-        {audience === 'client' ? <><span className="font-semibold text-[#16f2b3]">Full-stack delivery:</span> backend, frontend, data, integrations, and deployment tooling for practical business systems.</> : <><span className="font-semibold text-[#16f2b3]">Backend focus:</span> APIs, integrations, data platforms, and delivery tooling—supported by full-stack experience.</>}
+        {audience === 'client' ? <><span className="font-semibold text-[#16f2b3]">{t('fullstackFocus')}</span> {t('fullstackFocusBody')}</> : <><span className="font-semibold text-[#16f2b3]">{t('backendFocus')}</span> {t('backendFocusBody')}</>}
       </p>
 
       <div className="w-full my-12">

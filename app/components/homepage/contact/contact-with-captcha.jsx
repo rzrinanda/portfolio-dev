@@ -8,8 +8,10 @@ import { useState } from 'react';
 import { GoogleReCaptchaProvider, GoogleReCaptcha, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { TbMailForward } from "react-icons/tb";
 import { toast } from 'react-toastify';
+import { useLanguage } from '@/app/components/language-provider';
 
 function ContactWithCaptcha({ audience = 'recruiter' }) {
+  const { language, t } = useLanguage();
   const [input, setInput] = useState({
     user_name: '',
     user_email: '',
@@ -35,7 +37,7 @@ function ContactWithCaptcha({ audience = 'recruiter' }) {
 
   const handleSendMail = async (e) => {
     if (!executeRecaptcha) {
-      toast.error('Not available to execute ReCaptcha!');
+      toast.error(language === 'id' ? 'reCAPTCHA belum tersedia.' : 'Not available to execute ReCaptcha!');
       return;
     } else {
 
@@ -46,7 +48,7 @@ function ContactWithCaptcha({ audience = 'recruiter' }) {
       });
 
       if (!res?.data?.success) {
-        toast.error('Captcha verification failed!');
+        toast.error(language === 'id' ? 'Verifikasi captcha gagal.' : 'Captcha verification failed!');
         return;
       }
 
@@ -80,7 +82,7 @@ function ContactWithCaptcha({ audience = 'recruiter' }) {
       const res = await emailjs.send(serviceID, templateID, newInput, options);
 
       if (res.status === 200) {
-        toast.success('Message sent successfully!');
+        toast.success(language === 'id' ? 'Pesan berhasil dikirim!' : 'Message sent successfully!');
         setInput({
           user_name: '',
           user_email: '',
@@ -99,15 +101,15 @@ function ContactWithCaptcha({ audience = 'recruiter' }) {
   return (
     <div className="">
       <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
-        Contact with me
+        {t('contactWithMe')}
       </p>
       <div className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5">
         <p className="text-sm text-[#d3d8e8]">
-          {audience === 'client' ? "Have a project involving a web application, integration, internal system, or modernization effort? Let us discuss a practical delivery approach." : "Recruiting for a senior backend role or a backend lead-track opportunity? I would be glad to discuss the systems, integrations, and delivery experience behind this portfolio."}
+          {t(audience === 'client' ? 'clientContact' : 'recruiterContact')}
         </p>
         <div className="mt-6 flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <label className="text-base">Your Name: </label>
+            <label className="text-base">{t('yourName')}</label>
             <input
               className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
               type="text"
@@ -120,7 +122,7 @@ function ContactWithCaptcha({ audience = 'recruiter' }) {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-base">Your Email: </label>
+            <label className="text-base">{t('yourEmail')}</label>
             <input
               className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
               type="email"
@@ -134,12 +136,12 @@ function ContactWithCaptcha({ audience = 'recruiter' }) {
               }}
             />
             {error.email &&
-              <p className="text-sm text-red-400">Please provide a valid email!</p>
+              <p className="text-sm text-red-400">{t('validEmail')}</p>
             }
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-base">Your Message: </label>
+            <label className="text-base">{t('yourMessage')}</label>
             <textarea
               className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
               maxLength="500"
@@ -165,7 +167,7 @@ function ContactWithCaptcha({ audience = 'recruiter' }) {
           <div className="flex flex-col items-center gap-2">
             {error.required &&
               <p className="text-sm text-red-400">
-                Email and Message are required!
+                {t('requiredFields')}
               </p>
             }
             <button
@@ -173,7 +175,7 @@ function ContactWithCaptcha({ audience = 'recruiter' }) {
               role="button"
               onClick={handleSendMail}
             >
-              <span>Send Message</span>
+              <span>{t('sendMessage')}</span>
               <TbMailForward className="mt-1" size={18} />
             </button>
           </div>

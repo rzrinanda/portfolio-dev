@@ -68,7 +68,7 @@ test('homepage recruiter copy is driven by recruiter profile data', async () => 
   const about = await readFile(new URL('../app/components/homepage/about/index.jsx', import.meta.url), 'utf8');
   assert.match(hero, /personalData\.recruiterProfile/);
   assert.match(hero, /personalData\.clientProfile/);
-  assert.match(about, /recruiterProfile\.about/);
+  assert.match(about, /localizedProfile\(personalData\.recruiterProfile/);
 });
 
 test('recruiter focus is rendered on the homepage', async () => {
@@ -78,18 +78,18 @@ test('recruiter focus is rendered on the homepage', async () => {
 
 test('skills retain marquee cards while stating the backend-first focus', async () => {
   const skills = await readFile(new URL('../app/components/homepage/skills/index.jsx', import.meta.url), 'utf8');
-  assert.match(skills, /Backend focus/);
+  assert.match(skills, /backendFocus/);
   assert.match(skills, /<Marquee/);
 });
 
 test('contact invitation addresses recruiter conversations', async () => {
   const contact = await readFile(new URL('../app/components/homepage/contact/contact-without-captcha.jsx', import.meta.url), 'utf8');
-  assert.match(contact, /backend/i);
+  assert.match(contact, /recruiterContact/);
 });
 
 test('captcha contact invitation addresses recruiter conversations', async () => {
   const contact = await readFile(new URL('../app/components/homepage/contact/contact-with-captcha.jsx', import.meta.url), 'utf8');
-  assert.match(contact, /backend/i);
+  assert.match(contact, /recruiterContact/);
 });
 
 test('layout does not require a remote font during local preview or build', async () => {
@@ -121,8 +121,8 @@ test('client navigation retains its shareable audience query', async () => {
 test('client mode has a delivery-first hero and floating section navigation', async () => {
   const hero = await readFile(new URL('../app/components/homepage/hero-section/index.jsx', import.meta.url), 'utf8');
   const rail = await readFile(new URL('../app/components/floating-section-nav.jsx', import.meta.url), 'utf8');
-  assert.match(hero, /Turn operational bottlenecks into/);
-  assert.match(hero, /Delivery console/);
+  assert.match(hero, /clientHero/);
+  assert.match(hero, /deliveryConsole/);
   assert.match(rail, /IntersectionObserver/);
   assert.match(rail, /Hide section navigation/);
   assert.match(rail, /id: 'home'/);
@@ -134,4 +134,16 @@ test('recaptcha badge stays above fixed portfolio controls', async () => {
   const styles = await readFile(new URL('../app/css/globals.scss', import.meta.url), 'utf8');
   assert.match(styles, /\.grecaptcha-badge/);
   assert.match(styles, /z-index:\s*100000/);
+});
+
+test('portfolio provides a persisted English-first language switcher', async () => {
+  const provider = await readFile(new URL('../app/components/language-provider.jsx', import.meta.url), 'utf8');
+  const switcher = await readFile(new URL('../app/components/language-switcher.jsx', import.meta.url), 'utf8');
+  const layout = await readFile(new URL('../app/layout.js', import.meta.url), 'utf8');
+  assert.match(provider, /DEFAULT_LANGUAGE = 'en'/);
+  assert.match(provider, /localStorage/);
+  assert.match(switcher, /aria-label="Language"/);
+  assert.match(switcher, /🇬🇧/);
+  assert.match(switcher, /🇮🇩/);
+  assert.match(layout, /LanguageProvider/);
 });
