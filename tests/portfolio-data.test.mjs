@@ -143,8 +143,8 @@ test('portfolio provides a persisted English-first language switcher', async () 
   assert.match(provider, /DEFAULT_LANGUAGE = 'en'/);
   assert.match(provider, /localStorage/);
   assert.match(switcher, /aria-label="Language"/);
-  assert.match(switcher, /🇬🇧/);
-  assert.match(switcher, /🇮🇩/);
+  assert.match(switcher, /function FlagIcon/);
+  assert.match(switcher, /ring-2 ring-\[\#16f2b3\]/);
   assert.match(layout, /LanguageProvider/);
 });
 
