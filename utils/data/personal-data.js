@@ -46,5 +46,5 @@ export const personalData = {
   // stackOverflow: 'https://stackoverflow.com/users/16840768/abu-said',
   // leetcode: 'https://leetcode.com/said3812/',
   devUsername: 'rzrinanda',
-  resume: 'https://drive.google.com/file/d/1WgZ_lHcmqb5B08dbTIsTocwxycniqlVq/view?usp=sharing',
+  resume: 'https://drive.google.com/file/d/10JkpjkwVOdLO5FVn0lOL7sw7Y2a1WNti/view?usp=sharing',
 };
